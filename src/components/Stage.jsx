@@ -12,12 +12,12 @@ const Stage = () => {
     <>
       <OrbitControls />
       <ambientLight intensity={0.8} />
-
       <group>
         {major.map((x) => (
           <Card key={x.name} img={x.img} />
         ))}
       </group>
+      group
     </>
   );
 };

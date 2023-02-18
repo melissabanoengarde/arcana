@@ -10,6 +10,26 @@ body {
   font-family: sans-serif;
 }
 
+footer {
+  position: fixed;
+  bottom: 1rem;
+  left: 1rem;
+
+  color: gray;
+  font-size: 0.7rem;
+  opacity: 0.3;
+  text-transform: uppercase;
+}
+
+footer a {
+  text-decoration: none;
+  color: gray;
+}
+
+footer a:hover {
+  color: #000;
+}
+
 .canvas {
   position: absolute;
   top: 0;

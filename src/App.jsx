@@ -23,6 +23,13 @@ const App = () => {
           </Canvas>
         </section>
       </main>
+
+      <footer>
+        Made by{" "}
+        <a href="https://github.com/melissabanoengarde" target="_blank">
+          Melissa Banoen-Garde
+        </a>
+      </footer>
     </Suspense>
   );
 };
