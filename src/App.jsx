@@ -4,7 +4,8 @@ import { Stage, Loading } from "./components";
 
 const App = () => {
   return (
-    <Suspense fallback={<Loading />}>
+    // <Suspense fallback={<Loading />}>
+    <>
       <main>
         <section className="canvas">
           <Canvas
@@ -13,6 +14,7 @@ const App = () => {
               background:
                 "radial-gradient(circle, rgba(255,255,255,1) 9%, rgba(238,238,238,1) 97%)",
             }}
+            // style={{ background: "#000000" }}
             camera={{ fov: 75, position: [0, 0, 20] }}
           >
             <Stage />
@@ -26,7 +28,8 @@ const App = () => {
           Melissa Banoen-Garde
         </a>
       </footer>
-    </Suspense>
+    </>
+    // </Suspense>
   );
 };
 

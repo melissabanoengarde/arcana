@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo } from "react";
-import { OrbitControls } from "@react-three/drei";
+import { OrbitControls, Sparkles } from "@react-three/drei";
 import Card from "./Card";
 import Loading from "./Loading";
 import Deck from "../deck";
@@ -10,7 +10,7 @@ import Deck from "../deck";
 
 const Stage = () => {
   const deck = Deck.cards;
-  const [isLoading, setIsLoading] = useState(true); // Loading state
+  const [isLoading, setIsLoading] = useState(true);
   const [major, setMajor] = useState(null);
   const [cups, setCups] = useState(null);
   const [pentacles, setPentacles] = useState(null);
@@ -42,7 +42,15 @@ const Stage = () => {
       <OrbitControls />
       <ambientLight intensity={0.8} />
 
-      {/* major */}
+      <Sparkles
+        color={"#33423A"}
+        scale={(100, 50, 100)}
+        count={1000}
+        size={7}
+        noise={7}
+        speed={1}
+      />
+
       <group>
         {major.map((m) => (
           <Card key={m.name} data={m} />
