@@ -1,10 +1,6 @@
 import React, { Suspense } from "react";
 import { Canvas } from "@react-three/fiber";
-import { Stage } from "./components";
-
-function Loading() {
-  return <h1>Loading...</h1>;
-}
+import { Stage, Loading } from "./components";
 
 const App = () => {
   return (
@@ -13,11 +9,11 @@ const App = () => {
         <section className="canvas">
           <Canvas
             style={{
-              background: "rgb(255,255,255)",
+              backgroundColor: "rgb(255,255,255)",
               background:
                 "radial-gradient(circle, rgba(255,255,255,1) 9%, rgba(238,238,238,1) 97%)",
             }}
-            camera={{ fov: 75, position: [0, 0, 10] }}
+            camera={{ fov: 75, position: [0, 0, 20] }}
           >
             <Stage />
           </Canvas>
