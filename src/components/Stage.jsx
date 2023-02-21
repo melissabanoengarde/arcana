@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo } from "react";
-import { OrbitControls, Sparkles } from "@react-three/drei";
+import { OrbitControls, Sparkles, Bounds } from "@react-three/drei";
 import Card from "./Card";
 import Loading from "./Loading";
 import Deck from "../deck";
@@ -39,7 +39,7 @@ const Stage = () => {
 
   return (
     <>
-      <OrbitControls />
+      <OrbitControls makeDefault />
       <ambientLight intensity={0.8} />
 
       <Sparkles
@@ -51,35 +51,37 @@ const Stage = () => {
         speed={1}
       />
 
-      <group>
-        {major.map((m) => (
-          <Card key={m.name} data={m} />
-        ))}
-      </group>
+      <Bounds fit clip observe margin={1.2} damping={6}>
+        <group>
+          {major.map((m) => (
+            <Card key={m.name} data={m} />
+          ))}
+        </group>
 
-      <group>
-        {cups.map((c) => (
-          <Card key={c.name} data={c} />
-        ))}
-      </group>
+        <group>
+          {cups.map((c) => (
+            <Card key={c.name} data={c} />
+          ))}
+        </group>
 
-      <group>
-        {pentacles.map((p) => (
-          <Card key={p.name} data={p} />
-        ))}
-      </group>
+        <group>
+          {pentacles.map((p) => (
+            <Card key={p.name} data={p} />
+          ))}
+        </group>
 
-      <group>
-        {swords.map((s) => (
-          <Card key={s.name} data={s} />
-        ))}
-      </group>
+        <group>
+          {swords.map((s) => (
+            <Card key={s.name} data={s} />
+          ))}
+        </group>
 
-      <group>
-        {wands.map((w) => (
-          <Card key={w.name} data={w} />
-        ))}
-      </group>
+        <group>
+          {wands.map((w) => (
+            <Card key={w.name} data={w} />
+          ))}
+        </group>
+      </Bounds>
     </>
   );
 };
