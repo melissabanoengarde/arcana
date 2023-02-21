@@ -1,15 +1,12 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect } from "react";
 import { OrbitControls, Sparkles, Bounds } from "@react-three/drei";
 import Card from "./Card";
 import Loading from "./Loading";
 import Deck from "../deck";
 
-// function sortCards() {
-
-// }
-
 const Stage = () => {
   const deck = Deck.cards;
+
   const [isLoading, setIsLoading] = useState(true);
   const [major, setMajor] = useState(null);
   const [cups, setCups] = useState(null);
@@ -24,13 +21,15 @@ const Stage = () => {
       const p = deck.filter((p) => p.suit === "Pentacles");
       const s = deck.filter((s) => s.suit === "Swords");
       const w = deck.filter((w) => w.suit === "Wands");
+
       setMajor(m);
       setCups(c);
       setPentacles(p);
       setSwords(s);
       setWands(w);
+
       setIsLoading(false);
-    }, 1000);
+    }, 2000);
   }, []);
 
   if (isLoading) {
@@ -39,7 +38,16 @@ const Stage = () => {
 
   return (
     <>
-      <OrbitControls makeDefault />
+      {/* <OrbitControls makeDefault /> */}
+      <OrbitControls
+        makeDefault
+        minPolarAngle={0}
+        maxPolarAngle={Math.PI / 1.75}
+        minAzimuthAngle={-1}
+        maxAzimuthAngle={Math.PI / 3.75}
+        // minZoom={-15}
+        // maxZoom={10}
+      />
       <ambientLight intensity={0.8} />
 
       <Sparkles
@@ -51,7 +59,12 @@ const Stage = () => {
         speed={1}
       />
 
-      <Bounds fit clip observe margin={1.2} damping={6}>
+      <Bounds
+        //fit
+        clip
+        observe
+        //</>margin={0.2}
+      >
         <group>
           {major.map((m) => (
             <Card key={m.name} data={m} />

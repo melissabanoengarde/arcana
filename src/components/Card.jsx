@@ -1,20 +1,27 @@
 import React from "react";
 import * as THREE from "three";
-import { useTexture, Float, useBounds } from "@react-three/drei";
+import { useTexture, useBounds, Float } from "@react-three/drei";
 
 function rd(min, max) {
   return Math.random() * (max - min) + min;
 }
 
+const float = {
+  speed: 0.25,
+  rIntensity: 0.8,
+  fIntensity: 8,
+};
+
 function Select({ children }) {
   const hook = useBounds();
-
   return (
     <group
       onClick={(e) => (
-        e.stopPropagation(), e.delta <= 2 && hook.refresh(e.object).fit()
+        e.delta <= 2 && e.stopPropagation(), hook.refresh(e.object).fit()
       )}
-      onPointerMissed={(e) => e.button === 0 && hook.refresh().fit()}
+      onPointerMissed={(e) =>
+        e.button === 0 && hook.refresh().to({ position: [0, -10, 20] })
+      }
     >
       {children}
     </group>
@@ -40,22 +47,21 @@ const Card = ({ data }) => {
 
   return (
     <Float
-      speed={1}
-      rotationIntensity={1}
-      floatIntensity={1}
-      floatingRange={[-1, 1]}
+      speed={float.speed}
+      rotationIntensity={float.rIntensity}
+      floatIntensity={float.fIntensity}
     >
       <Select>
         <mesh
-          position={[rd(-50, 50), rd(-20, 20), rd(-30, 10)]}
+          position={[rd(-20, 20), rd(-10, 10), rd(-20, 20)]}
           rotation={[rd(-0.5, 0.5), rd(-0.5, 0.5), rd(-0.5, 0.5)]}
         >
-          <planeGeometry args={[2, 3.5]} />
+          <planeGeometry args={[1, 1.8]} />
           <meshStandardMaterial map={texture} />
 
           {/* back */}
           <mesh position={[0, 0, -0.008]} scale={1.02}>
-            <planeGeometry args={[2, 3.5, 30, 40]} />
+            <planeGeometry args={[1, 1.8, 30, 40]} />
             <meshBasicMaterial
               color={"white"}
               wireframe

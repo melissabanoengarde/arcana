@@ -1,6 +1,6 @@
 import React, { Suspense } from "react";
 import { Canvas } from "@react-three/fiber";
-import { Stage, Loading } from "./components";
+import { Stage, Ground } from "./components";
 
 const App = () => {
   return (
@@ -14,10 +14,11 @@ const App = () => {
               background:
                 "radial-gradient(circle, rgba(255,255,255,1) 9%, rgba(238,238,238,1) 97%)",
             }}
-            // style={{ background: "#000000" }}
-            camera={{ fov: 75, position: [0, 0, 20] }}
+            // camera={{ fov: 75, position: [0, 0, 20] }}
+            camera={{ position: [0, -10, 20] }}
           >
             <Stage />
+            {/* <Ground /> */}
           </Canvas>
         </section>
       </main>
